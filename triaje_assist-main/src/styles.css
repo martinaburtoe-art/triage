@@ -1,0 +1,303 @@
+@import "tailwindcss";
+@source "../src";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --font-sans: "Inter", system-ui, sans-serif;
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --radius-2xl: calc(var(--radius) + 8px);
+  --radius-3xl: calc(var(--radius) + 12px);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary-glow: var(--primary-glow);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-success: var(--success);
+  --color-success-foreground: var(--success-foreground);
+  --color-warning: var(--warning);
+  --color-warning-foreground: var(--warning-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-triage-c1: var(--triage-c1);
+  --color-triage-c2: var(--triage-c2);
+  --color-triage-c3: var(--triage-c3);
+  --color-triage-c4: var(--triage-c4);
+  --color-triage-c5: var(--triage-c5);
+}
+
+:root {
+  --radius: 0.875rem;
+
+  /* Clinical light palette */
+  --background: oklch(0.985 0.008 230);
+  --foreground: oklch(0.22 0.04 240);
+
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.22 0.04 240);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.22 0.04 240);
+
+  /* Medical teal/blue primary */
+  --primary: oklch(0.58 0.13 215);
+  --primary-foreground: oklch(0.99 0 0);
+  --primary-glow: oklch(0.78 0.12 200);
+
+  --secondary: oklch(0.95 0.02 220);
+  --secondary-foreground: oklch(0.28 0.05 240);
+
+  --muted: oklch(0.96 0.012 230);
+  --muted-foreground: oklch(0.5 0.03 240);
+
+  --accent: oklch(0.92 0.05 200);
+  --accent-foreground: oklch(0.25 0.06 230);
+
+  --destructive: oklch(0.6 0.22 25);
+  --destructive-foreground: oklch(0.99 0 0);
+
+  --success: oklch(0.65 0.16 155);
+  --success-foreground: oklch(0.99 0 0);
+
+  --warning: oklch(0.78 0.16 75);
+  --warning-foreground: oklch(0.2 0.04 60);
+
+  --border: oklch(0.9 0.015 230);
+  --input: oklch(0.92 0.012 230);
+  --ring: oklch(0.58 0.13 215);
+
+  /* Triage Manchester colors */
+  --triage-c1: oklch(0.6 0.24 27);
+  /* Rojo - Resucitación */
+  --triage-c2: oklch(0.7 0.19 50);
+  /* Naranja - Emergencia */
+  --triage-c3: oklch(0.82 0.16 95);
+  /* Amarillo - Urgente */
+  --triage-c4: oklch(0.7 0.17 150);
+  /* Verde - Menos urgente */
+  --triage-c5: oklch(0.65 0.14 240);
+  /* Azul - No urgente */
+
+  /* Gradients & shadows */
+  --gradient-bg: radial-gradient(
+    ellipse at top,
+    oklch(0.95 0.04 215) 0%,
+    oklch(0.985 0.008 230) 60%
+  );
+  --gradient-primary: linear-gradient(135deg, oklch(0.58 0.13 215), oklch(0.7 0.13 195));
+  --gradient-card: linear-gradient(180deg, oklch(1 0 0 / 0.85), oklch(1 0 0 / 0.65));
+  --shadow-clinical: 0 10px 40px -12px oklch(0.5 0.1 220 / 0.25);
+  --shadow-glow: 0 0 60px oklch(0.7 0.13 200 / 0.35);
+  --transition-smooth: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.dark {
+  --background: oklch(0.18 0.03 240);
+  --foreground: oklch(0.96 0.01 230);
+  --card: oklch(0.24 0.04 240);
+  --card-foreground: oklch(0.96 0.01 230);
+  --popover: oklch(0.24 0.04 240);
+  --popover-foreground: oklch(0.96 0.01 230);
+  --primary: oklch(0.72 0.14 200);
+  --primary-foreground: oklch(0.18 0.03 240);
+  --secondary: oklch(0.28 0.04 240);
+  --secondary-foreground: oklch(0.96 0.01 230);
+  --muted: oklch(0.28 0.04 240);
+  --muted-foreground: oklch(0.7 0.03 230);
+  --accent: oklch(0.32 0.06 220);
+  --accent-foreground: oklch(0.96 0.01 230);
+  --border: oklch(1 0 0 / 10%);
+  --input: oklch(1 0 0 / 12%);
+  --ring: oklch(0.72 0.14 200);
+}
+
+@layer base {
+  * {
+    border-color: var(--color-border);
+  }
+
+  html,
+  body,
+  #root {
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+  }
+
+  html,
+  body {
+    font-family: var(--font-sans);
+    background: var(--gradient-bg);
+    background-attachment: fixed;
+    color: var(--color-foreground);
+    -webkit-font-smoothing: antialiased;
+  }
+}
+
+@layer utilities {
+  .glass {
+    background: var(--gradient-card);
+    backdrop-filter: blur(20px) saturate(180%);
+    -webkit-backdrop-filter: blur(20px) saturate(180%);
+    border: 1px solid oklch(1 0 0 / 0.6);
+    box-shadow: var(--shadow-clinical);
+  }
+
+  .glass-strong {
+    background: oklch(1 0 0 / 0.78);
+    backdrop-filter: blur(28px) saturate(180%);
+    -webkit-backdrop-filter: blur(28px) saturate(180%);
+    border: 1px solid oklch(1 0 0 / 0.7);
+    box-shadow: var(--shadow-clinical);
+  }
+
+  .gradient-primary {
+    background: var(--gradient-primary);
+  }
+
+  .text-gradient {
+    background: var(--gradient-primary);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  .shadow-clinical {
+    box-shadow: var(--shadow-clinical);
+  }
+
+  .shadow-glow {
+    box-shadow: var(--shadow-glow);
+  }
+
+  @keyframes heartbeat {
+    0%,
+    100% {
+      transform: scale(1);
+    }
+
+    15% {
+      transform: scale(1.18);
+    }
+
+    30% {
+      transform: scale(1);
+    }
+
+    45% {
+      transform: scale(1.12);
+    }
+
+    60% {
+      transform: scale(1);
+    }
+  }
+
+  .animate-heartbeat {
+    animation: heartbeat 1.2s ease-in-out infinite;
+  }
+
+  @keyframes pulse-ring {
+    0% {
+      box-shadow: 0 0 0 0 oklch(0.58 0.13 215 / 0.5);
+    }
+
+    70% {
+      box-shadow: 0 0 0 18px oklch(0.58 0.13 215 / 0);
+    }
+
+    100% {
+      box-shadow: 0 0 0 0 oklch(0.58 0.13 215 / 0);
+    }
+  }
+
+  .animate-pulse-ring {
+    animation: pulse-ring 2s ease-out infinite;
+  }
+
+  @keyframes wave {
+    0% {
+      stroke-dashoffset: 0;
+    }
+
+    100% {
+      stroke-dashoffset: -200;
+    }
+  }
+
+  .animate-wave {
+    animation: wave 2s linear infinite;
+  }
+
+  @keyframes fade-up {
+    from {
+      opacity: 0;
+      transform: translateY(12px);
+    }
+
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .animate-fade-up {
+    animation: fade-up 0.4s var(--transition-smooth);
+  }
+}
+
+/* Configuración específica para impresión térmica */
+@media print {
+  @page {
+    /* Quitamos los márgenes por defecto del navegador para aprovechar el papel */
+    margin: 0;
+  }
+
+  body {
+    background-color: white !important;
+    margin: 0;
+    padding: 0;
+  }
+
+  /* Ocultamos fondos y sombras innecesarias para ahorrar tinta */
+  * {
+    box-shadow: none !important;
+    text-shadow: none !important;
+  }
+}
+
+/* Estilos para barras de desplazamiento elegantes */
+.custom-scrollbar::-webkit-scrollbar {
+  width: 6px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background-color: #cbd5e1;
+  /* Color slate-300 */
+  border-radius: 10px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background-color: #94a3b8;
+  /* Color slate-400 */
+}
